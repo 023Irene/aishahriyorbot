@@ -13,7 +13,8 @@ bot.use(async (ctx, next) => {
   await next();
 });
 
-// Установка команд
+/* 
+// Установка команд — закомментировано, чтобы избежать Too Many Requests
 (async () => {
   try {
     await bot.api.setMyCommands([
@@ -26,18 +27,19 @@ bot.use(async (ctx, next) => {
     console.error('Ошибка установки команд:', err);
   }
 })();
+*/
 
 // Inline-кнопки видео и ссылки
 const VIDEO_BUTTONS = new InlineKeyboard()
-  .url('▶️ Видео в YouTube', 'https://youtu.be/your_video_id')
-  .url('📢 Telegram-канал',  'https://t.me/your_channel').row()
+  .url('▶️ Видео в YouTube',       'https://youtu.be/your_video_id')
+  .url('📢 Telegram-канал',        'https://t.me/your_channel').row()
   .webApp('🛠 Описание инструментов', 'https://example.com/tools')
-  .webApp('📚 База знаний',         'https://example.com/knowledge').row()
-  .url('🆘 Техподдержка',         'https://t.me/your_support');
+  .webApp('📚 База знаний',           'https://example.com/knowledge').row()
+  .url('🆘 Техподдержка',           'https://t.me/your_support');
 
 // Reply-клавиатура главного меню
 const MAIN_REPLY = new Keyboard()
-  .webApp('👤 Профиль',         'https://example.com/profile').row()
+  .webApp('👤 Профиль',            'https://example.com/profile').row()
   .text('🤖 GPTs/Claude/Gemini').text('🎙 Аудио с ИИ').row()
   .text('🎨 Дизайн с ИИ').text('🎬 Видео будущего').row()
   .text('📦 Хранитель изображений')
@@ -58,4 +60,9 @@ bot.command('start', async (ctx) => {
         .text('Қазақша 🇰🇿',   'lang_kk')
     }
   );
+});
+
+// Запуск бота
+bot.start({
+  onStart: info => console.log(`Бот запущен, @${info.username}`)
 });
