@@ -1,15 +1,16 @@
 {
   "name": "shakhr-ai-bot",
-  "type": "module",
   "version": "1.0.0",
+  "description": "Телеграм-бот с AI-инструментами",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "dotenv": "^17.2.0",
     "grammy": "^1.37.0"
